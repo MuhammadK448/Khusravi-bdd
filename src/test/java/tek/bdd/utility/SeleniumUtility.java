@@ -28,7 +28,7 @@ public class SeleniumUtility extends BaseSetup {
     }
 
     //Create method for getting the text of a located element
-    public String getText(By locator){
+    public String getElementText(By locator){
        return waitForVisibility(locator).getText();
     }
 }
