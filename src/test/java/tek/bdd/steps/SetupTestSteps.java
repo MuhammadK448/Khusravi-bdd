@@ -25,4 +25,12 @@ public class SetupTestSteps extends SeleniumUtility {
     public void closeBrowser(){
         quitBrowser();
     }
+
+    @Then("Validate Sign in button is Enabled")
+    public void validateSignInButtonIsEnabled(){
+        //getDriver().findElement(By.id("signinLink")).isEnabled();
+        boolean isSignedInBtnEnabled = isElementEnabled(By.id("signinLink")); //Using Utility Method instead
+        Assert.assertTrue(isSignedInBtnEnabled);
+
+    }
 }
