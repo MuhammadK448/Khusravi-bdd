@@ -35,4 +35,8 @@ public class SeleniumUtility extends BaseSetup {
     public boolean isElementEnabled(By locator){
         return waitForVisibility(locator).isEnabled();
     }
+
+    public boolean isElementDisplayed(By locator){
+        return waitForVisibility(locator).isDisplayed();
+    }
 }
