@@ -38,9 +38,9 @@ public class SecurityTestSteps extends SeleniumUtility {
         clickOnElement(SignInPage.LOGIN_BUTTON);
     }
     @Then("User should see error {string}")
-    public void user_should_see_error(String message) {
-        String errorMessage = getElementText(SignInPage.ERROR_MESSAGE);
-        Assert.assertEquals(message, errorMessage);
+    public void user_should_see_error(String expecteMessage) {
+        String actualErrorMessage = getElementText(SignInPage.ERROR_MESSAGE);
+        Assert.assertEquals(expecteMessage, actualErrorMessage);
     }
     @Then("User should be able to see account link")
     public void user_should_be_able_to_see_account_link() {
