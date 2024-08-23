@@ -18,8 +18,8 @@ public class SecurityTestSteps extends SeleniumUtility {
     @Then("Verify Sing in page is displayed")
     public void verify_sing_in_page_is_displayed() {
         //boolean signInPageSubTitle = isElementDisplayed(By.className("login__subtitle")); //No POM
-        boolean signInPageSubTitle = isElementDisplayed(SignInPage.PAGE_SUBTITLE); //with POM
         //Assert.assertTrue(signInPageSubTitle);
+       String  signInPageSubTitle = getElementText(SignInPage.PAGE_SUBTITLE);
         Assert.assertEquals("Sign in", signInPageSubTitle);
     }
     @When("User enters correct username and password and licks on login")
@@ -30,6 +30,17 @@ public class SecurityTestSteps extends SeleniumUtility {
         sendText(SignInPage.EMAIL_INPUT, "Khusravi987@gmail.com");
         sendText(SignInPage.PASSWORD_INPUT, "Password@123");
         clickOnElement(SignInPage.LOGIN_BUTTON);
+    }
+    @When("User enters {string} and {string} and licks on login")
+    public void user_enters_username_and_password_and_licks_on_login(String username, String password) {
+        sendText(SignInPage.EMAIL_INPUT, username);
+        sendText(SignInPage.PASSWORD_INPUT, password);
+        clickOnElement(SignInPage.LOGIN_BUTTON);
+    }
+    @Then("User should see error {string}")
+    public void user_should_see_error(String message) {
+        String errorMessage = getElementText(SignInPage.ERROR_MESSAGE);
+        Assert.assertEquals(message, errorMessage);
     }
     @Then("User should be able to see account link")
     public void user_should_be_able_to_see_account_link() {
