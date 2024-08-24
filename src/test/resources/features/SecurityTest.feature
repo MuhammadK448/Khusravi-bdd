@@ -1,8 +1,9 @@
+@Smoke @Regression
 Feature: Security tests scenarios
 
   Scenario: Validate successful sing in
-    When User clicks on Sign in link
-    Then Verify Sing in page is displayed
+    When User clicks on "Sign in" link
+    Then Verify Sign in page is displayed
     When User enters "Khusravi987@gmail.com" and "Password@123" and licks on login
     Then User should be able to see account link
 
@@ -17,9 +18,10 @@ Feature: Security tests scenarios
 #    Then Verify Sing in page is displayed
 #    When User enters "Khusravi987@gmail.com" and "WrongPassword@123" and licks on login
 #    Then User should see error "wrong username or password"
+  @SpecificScenario
   Scenario Outline: Sign in with Invalid Credentials
-    When User clicks on Sign in link
-    Then Verify Sing in page is displayed
+    When User clicks on "Sign in" link
+    Then Verify Sign in page is displayed
     When User enters "<username>" and "<password>" and licks on login
     Then User should see error "wrong username or password"
     Examples:

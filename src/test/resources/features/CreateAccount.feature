@@ -1,3 +1,4 @@
+@Regression
 Feature: Create new Account
 
   # Steps that are common between scenarios of specific feature
@@ -7,6 +8,7 @@ Feature: Create new Account
     Then Verify Sign in page is displayed
     When User clicks on "Create New Account" link
     Then Verify Sign up page is displayed
+
   Scenario: Create a new account and validate it
     When User enters "Muhammad" and "random" and "1234@Password"
     When User clicks on "Sign Up" button
