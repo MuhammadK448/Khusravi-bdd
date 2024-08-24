@@ -11,7 +11,7 @@ import tek.bdd.utility.SeleniumUtility;
 
 public class CreateAccountSteps extends SeleniumUtility {
 
-    private static String emailToUse;
+    private static String emailToUse; // Used across the class for all the steps
     @When("User clicks on Create New Account link")
     public void user_clicks_on_create_new_account_link() {
         clickOnElement(SignInPage.Create_New_Account_Button);
