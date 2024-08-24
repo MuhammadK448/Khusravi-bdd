@@ -8,4 +8,5 @@ public class SignInPage {
     public static final By PASSWORD_INPUT = By.id("password");
     public static final By LOGIN_BUTTON = By.id("loginBtn");
     public static final By ERROR_MESSAGE = By.className("error");
+    public static final By Create_New_Account_Button = By.id("newAccountBtn");
 }

@@ -15,8 +15,8 @@ public class SecurityTestSteps extends SeleniumUtility {
         //clickOnElement(By.id("signinLink")); without POM page
         clickOnElement(HomePage.SIGN_IN_LINK); //with POM page
     }
-    @Then("Verify Sing in page is displayed")
-    public void verify_sing_in_page_is_displayed() {
+    @Then("Verify Sign in page is displayed")
+    public void verify_sign_in_page_is_displayed() {
         //boolean signInPageSubTitle = isElementDisplayed(By.className("login__subtitle")); //No POM
         //Assert.assertTrue(signInPageSubTitle);
        String  signInPageSubTitle = getElementText(SignInPage.PAGE_SUBTITLE);

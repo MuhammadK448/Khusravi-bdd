@@ -23,7 +23,7 @@ Feature: Security tests scenarios
     When User enters "<username>" and "<password>" and licks on login
     Then User should see error "wrong username or password"
     Examples:
-    |username|password|
-    |InvalidEmail123@gmail.com|Password@123|
-    |Khusravi987@gmail.com    |WrongPassword@123|
-    |InvalidEmail123@gmail.com|WrongPassword@123|
+      | username                  | password          |
+      | InvalidEmail123@gmail.com | Password@123      |
+      | Khusravi987@gmail.com     | WrongPassword@123 |
+      | InvalidEmail123@gmail.com | WrongPassword@123 |

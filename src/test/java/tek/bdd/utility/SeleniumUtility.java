@@ -39,4 +39,7 @@ public class SeleniumUtility extends BaseSetup {
     public boolean isElementDisplayed(By locator){
         return waitForVisibility(locator).isDisplayed();
     }
+    //=================================Random Email Generator
+
+    //=================================Random email Generator
 }
