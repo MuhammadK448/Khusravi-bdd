@@ -16,6 +16,7 @@ Feature: Create new Account
     Then Verify new account is created
     Then validate email address in account page match
 
+    @TestReport
     Scenario: Create account with existing email
       When User enters "Muhammad" and "flight123@gmail.com" and "1234@Password"
       When User clicks on "Sign Up" button
