@@ -1,5 +1,6 @@
 package tek.bdd.steps;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -8,6 +9,9 @@ import tek.bdd.pages.ProfilePage;
 import tek.bdd.pages.SignInPage;
 import tek.bdd.utility.RandomGenerator;
 import tek.bdd.utility.SeleniumUtility;
+
+import java.util.List;
+import java.util.Map;
 
 public class CreateAccountSteps extends SeleniumUtility {
 
@@ -49,6 +53,37 @@ public class CreateAccountSteps extends SeleniumUtility {
        String actualEmailText = getElementText(ProfilePage.PROFILE_EMAIL_TEXT);
        Assert.assertEquals("Actual Email should match used email for creating account",
                emailToUse, actualEmailText);
+    }
+
+    @When("User enters new account information using map data")
+    public void user_enters_new_account_information_using_map_data(DataTable dataTable) {
+        //Converting data table to Map<String, String>
+        Map<String, String> data = dataTable.asMap();
+        String email = data.get("email");
+        String name = data.get("email");
+        String password = data.get("password");
+
+        emailToUse = email.equalsIgnoreCase("random") ?
+                RandomGenerator.generateRandomEmail() : email;
+        sendText(SignUpPage.NAME_INPUT, name);
+        sendText(SignUpPage.EMAIL_INPUT, emailToUse);
+        sendText(SignUpPage.PASSWORD_INPUT, password);
+        sendText(SignUpPage.CONFIRM_PASSWORD_INPUT, password);
+    }
+
+    @When("User enters new account information as list data")
+    public void user_enters_new_account_information_as_list_data(DataTable dataTable) {
+         List<String> data = dataTable.asList();
+         String name = data.get(0);
+         String email = data.get(1);
+         String password = data.get(2);
+
+        emailToUse = email.equalsIgnoreCase("random") ?
+                RandomGenerator.generateRandomEmail() : email;
+        sendText(SignUpPage.NAME_INPUT, name);
+        sendText(SignUpPage.EMAIL_INPUT, emailToUse);
+        sendText(SignUpPage.PASSWORD_INPUT, password);
+        sendText(SignUpPage.CONFIRM_PASSWORD_INPUT, password);
     }
 
 }

@@ -6,7 +6,10 @@ import org.openqa.selenium.chromium.ChromiumDriver;
 
 import java.time.Duration;
 
-
+/*
+    We can change BaseSetup class to Abstract class, when we have too many people working in our project
+    to avoid changing it and to restrict object creation of it
+ */
 public class BaseSetup {
 
     // Encapsulating driver instance (protecting, security, Bundle data in single unit)
