@@ -22,7 +22,8 @@ public class BaseSetup {
         *Instantiate implicit wait
         * */
         driver = new ChromeDriver();
-        driver.get("https://retail.tekschool-students.com/");
+        //driver.get("https://retail.tekschool-students.com/");
+        driver.get("https://dev.insurance.tekschool-students.com/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 

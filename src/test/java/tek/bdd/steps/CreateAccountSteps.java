@@ -62,9 +62,13 @@ public class CreateAccountSteps extends SeleniumUtility {
         String email = data.get("email");
         String name = data.get("email");
         String password = data.get("password");
+//        String firstName = data.get("firstName"); //Temp
 
         emailToUse = email.equalsIgnoreCase("random") ?
                 RandomGenerator.generateRandomEmail() : email;
+//        if(firstName != null){ //Temp
+//            sendText(SignUpPage.NAME_INPUT, firstName);
+//        }
         sendText(SignUpPage.NAME_INPUT, name);
         sendText(SignUpPage.EMAIL_INPUT, emailToUse);
         sendText(SignUpPage.PASSWORD_INPUT, password);
