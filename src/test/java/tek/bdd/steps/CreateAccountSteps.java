@@ -11,6 +11,7 @@ import tek.bdd.pages.SignInPage;
 import tek.bdd.utility.RandomGenerator;
 import tek.bdd.utility.SeleniumUtility;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -107,6 +108,25 @@ public class CreateAccountSteps extends SeleniumUtility {
 
             Assert.assertEquals("Error Message should Match",
                     expected, actual);
+        }
+    }
+
+    @Then("Validate field error message using Map")
+    public void validate_field_error_message_using_map(DataTable dataTable) {
+        Map<String, String> expectedData = dataTable.asMap();
+        List<WebElement> errorElements = getElementsList(SignInPage.ERROR_MESSAGE);
+        Assert.assertEquals("Expected adn Actual Sizes should Match",
+                expectedData.size(), errorElements.size());
+
+        Map<String, String> actualErrors = new HashMap<>();
+        for(WebElement element : errorElements){
+            String text = element.getText();
+            String key = text.split(" ")[0];
+            actualErrors.put(key, text);
+        }
+        for (String key : expectedData.keySet()){
+            Assert.assertEquals("Error Message should match",
+                    expectedData.get(key), actualErrors.get(key));
         }
     }
 

@@ -36,3 +36,12 @@ Feature: Create new account with data table
       |Email is a required field|
       |Password is a required field|
       |Confirm Password is a required field|
+
+  @SignUpErrorMessage2
+  Scenario: Validate error messages using Map
+    When User clicks on "Sign Up" button
+    Then Validate field error message using Map
+      |Name is a required field|
+      |Email is a required field|
+      |Password is a required field|
+      |Confirm Password is a required field|
