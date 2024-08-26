@@ -27,3 +27,12 @@ Feature: Create new account with data table
     Then Verify Profile page is displayed
     Then Verify new account is created
     Then validate email address in account page match
+
+    @SignUpErrorMessage
+    Scenario: Validate error on all fields when no data entered
+      When User clicks on "Sign Up" button
+      Then Validate field error message
+      |Name is a required field|
+      |Email is a required field|
+      |Password is a required field|
+      |Confirm Password is a required field|

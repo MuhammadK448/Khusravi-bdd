@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import tek.bdd.base.BaseSetup;
 
 import java.time.Duration;
+import java.util.List;
 
 public class SeleniumUtility extends BaseSetup {
 
@@ -45,5 +46,9 @@ public class SeleniumUtility extends BaseSetup {
     public byte[] takeScreenShot(){ // Used in After hook method of HooksSteps
         TakesScreenshot screenshot = (TakesScreenshot) getDriver();
         return screenshot.getScreenshotAs(OutputType.BYTES);
+    }
+
+    public List<WebElement> getElementsList(By locator){
+        return getWait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
 }

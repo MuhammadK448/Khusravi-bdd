@@ -39,7 +39,8 @@ public class InsurancePricePlanSteps extends SeleniumUtility {
     @Then("Validate the table values match the expected data")
     public void Validate_the_table_values_match_the_expected_data(){
         // Find all table rows
-        List<WebElement> rows = getDriver().findElements(By.xpath("//tbody/tr"));
+        List<WebElement> rows = getElementsList(By.xpath("//tbody/tr"));
+        //List<WebElement> rows = getDriver().findElements(By.xpath("//tbody/tr"));
 
         for(WebElement row : rows){
             // Find all cells in the current row

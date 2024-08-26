@@ -4,6 +4,7 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 import tek.bdd.pages.SignUpPage;
 import tek.bdd.pages.ProfilePage;
 import tek.bdd.pages.SignInPage;
@@ -88,6 +89,25 @@ public class CreateAccountSteps extends SeleniumUtility {
         sendText(SignUpPage.EMAIL_INPUT, emailToUse);
         sendText(SignUpPage.PASSWORD_INPUT, password);
         sendText(SignUpPage.CONFIRM_PASSWORD_INPUT, password);
+    }
+
+    @Then("Validate field error message")
+    public void validate_field_error_message(DataTable dataTable) {
+       List<String> expectedData = dataTable.asList();
+
+       //Actual data
+        List<WebElement> errorElements = getElementsList(SignInPage.ERROR_MESSAGE);
+        Assert.assertEquals("Expected adn Actual Sizes should Match",
+                expectedData.size(), errorElements.size());
+
+        //Second Assertion
+        for(int index = 0; index < expectedData.size(); index++){
+            String expected = expectedData.get(index);
+            String actual = errorElements.get(index).getText();
+
+            Assert.assertEquals("Error Message should Match",
+                    expected, actual);
+        }
     }
 
 }
