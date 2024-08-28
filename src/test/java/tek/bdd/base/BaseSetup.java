@@ -40,12 +40,13 @@ public class BaseSetup {
         try {
             String configFilePath = System.getProperty("user.dir") +
                     "/src/test/resources/configs/dev-config.properties";
-
+            LOGGER.info("Reading Config file {}", configFilePath);
             File file = new File(configFilePath);
             FileInputStream fileInputStream = new FileInputStream(file);
             properties = new Properties();
             properties.load(fileInputStream);
         }catch (IOException ex) {
+            LOGGER.error("Error reading Config file", ex);
             throw new RuntimeException("Something wrong with Config file", ex);
         }
     }
@@ -54,6 +55,7 @@ public class BaseSetup {
     public void setupBrowser(){
         String browserType = properties.getProperty("ui.browser");
         boolean isHeadless = Boolean.parseBoolean(properties.getProperty("ui.browser.headless"));
+        LOGGER.info("Running on browser {} and isHeadless {} ", browserType, isHeadless);
         if(browserType.equalsIgnoreCase("chrome")){
             ChromeOptions options = new ChromeOptions();
             if(isHeadless)
