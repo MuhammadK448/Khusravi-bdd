@@ -20,7 +20,7 @@ public class CommonSteps extends SeleniumUtility {
     //Insurance page
     @Then("Verify {string} page is displayed")
     public void verify_page_title_is_displayed(String titleText) {
-        String pageTitleXpath = "//h2[contains(text(),'" + titleText + "')]";
+         String pageTitleXpath = "//h2[contains(text(),'" + titleText + "')]";
         isElementDisplayed(By.xpath(pageTitleXpath));
     }
 }
