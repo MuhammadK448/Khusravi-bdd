@@ -3,7 +3,9 @@ package tek.bdd.steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
+import tek.bdd.pages.ProfilePage;
 import tek.bdd.utility.SeleniumUtility;
 
 public class CommonSteps extends SeleniumUtility {
@@ -23,4 +25,24 @@ public class CommonSteps extends SeleniumUtility {
          String pageTitleXpath = "//h2[contains(text(),'" + titleText + "')]";
         isElementDisplayed(By.xpath(pageTitleXpath));
     }
+
+    @When("User enters {string} on {string} field")
+    public void user_enters_on_field(String text, String fieldName) {
+        String xpath = " //label[text()='"+fieldName+"']/..//input";
+        sendText(By.xpath(xpath), text);
+    }
+    @Then("Verify Toast displayed")
+    public void verify_toast_displayed() {
+        boolean isToastDisplayed  = isElementDisplayed(ProfilePage.TOAST_BOX);
+        Assert.assertTrue("Toast Should Displayed", isToastDisplayed);
+    }
+    @When("wait for {int} seconds")
+    public void wait_for_seconds(Integer seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        }catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
 }

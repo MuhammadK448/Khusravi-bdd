@@ -21,3 +21,5 @@ Feature: Create new Account
       When User enters "Muhammad" and "flight123@gmail.com" and "1234@Password"
       When User clicks on "Sign Up" button
       Then User should see error "this email is already exist, please use another email address"
+
+
