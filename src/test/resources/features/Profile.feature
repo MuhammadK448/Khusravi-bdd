@@ -3,8 +3,8 @@ Feature: Account profile feature
   Background: Login to Account feature
     Given User clicks on "Sign in" link
     Then Verify Sign in page is displayed
-    When User enters "Khusravi987@gmail.com" on "Email" field
-    When User enters "Password@123" on "Password" field
+    When User enters "khusravi@hotmail.com" on "Email" field
+    When User enters "Khusravi@123" on "Password" field
     When User clicks on "Login" button
     #When User enters "Khusravi987@gmail.com" and "Password@123" and licks on login
     Then User should be able to see account link

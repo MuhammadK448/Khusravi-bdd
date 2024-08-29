@@ -11,6 +11,10 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import tek.bdd.Browsers.BaseBrowser;
+import tek.bdd.Browsers.ChromeBrowser;
+import tek.bdd.Browsers.EdgeBrowser;
+import tek.bdd.Browsers.FireFoxBrowser;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -52,30 +56,24 @@ public class BaseSetup {
     }
     //driver.get("https://retail.tekschool-students.com/");
     //driver.get("https://dev.insurance.tekschool-students.com/");
-    public void setupBrowser(){
+    public void setupBrowser() {
         String browserType = properties.getProperty("ui.browser");
         boolean isHeadless = Boolean.parseBoolean(properties.getProperty("ui.browser.headless"));
         LOGGER.info("Running on browser {} and isHeadless {} ", browserType, isHeadless);
-        if(browserType.equalsIgnoreCase("chrome")){
-            ChromeOptions options = new ChromeOptions();
-            if(isHeadless)
-                options.addArguments("--headless");
-            driver = new ChromeDriver(options);
-        }else if(browserType.equalsIgnoreCase("edge")) {
-            EdgeOptions options = new EdgeOptions();
-            if(isHeadless)
-                options.addArguments("--headless");
-            driver = new EdgeDriver(options);
-        }else if(browserType.equalsIgnoreCase("firefox")){
-            FirefoxOptions options = new FirefoxOptions();
-            if(isHeadless)
-                options.addArguments("--headless");
-            driver = new FirefoxDriver(options);
-        }else {
-            throw new RuntimeException("Wrong Driver is select on config file");
-        }
 
-            String url = properties.getProperty("ui.url"); // takes the value(url) of ui.url key from config.properties file
+        BaseBrowser browser;
+        if (browserType.equalsIgnoreCase("chrome"))
+            browser = new ChromeBrowser();
+        else if (browserType.equalsIgnoreCase("edge"))
+            browser = new EdgeBrowser();
+        else if (browserType.equalsIgnoreCase("firefox"))
+            browser = new FireFoxBrowser();
+        else
+            throw new RuntimeException("Wrong Driver is select on config file");
+
+        driver = browser.openBrowser(isHeadless);
+
+        String url = properties.getProperty("ui.url"); // takes the value(url) of ui.url key from config.properties file
         driver.get(url);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));

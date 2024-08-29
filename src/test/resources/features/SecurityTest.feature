@@ -4,7 +4,7 @@ Feature: Security tests scenarios
   Scenario: Validate successful sing in
     When User clicks on "Sign in" link
     Then Verify Sign in page is displayed
-    When User enters "Khusravi987@gmail.com" and "Password@123" and licks on login
+    When User enters "khusravi@hotmail.com" and "Khusravi@123" and licks on login
     Then User should be able to see account link
 
 #    Scenario: Sign in with Invalid username and Valid password
