@@ -5,6 +5,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
+import tek.bdd.pages.HomePage;
 import tek.bdd.pages.ProfilePage;
 import tek.bdd.utility.SeleniumUtility;
 
@@ -15,8 +17,14 @@ public class CommonSteps extends SeleniumUtility {
     }
     @When("User clicks on {string} button")
     public void userClicksOnButton(String buttonText){
-        String buttonXpath = "//button[text()='" + buttonText + "']";
-        clickOnElement(By.xpath(buttonXpath));
+        try {
+            String buttonXpath = "//button[text()='" + buttonText + "']";
+            clickOnElement(By.xpath(buttonXpath));
+        } catch (TimeoutException ex) {
+            String buttonXpath = "//*[text()='" + buttonText + "']/..";
+                                    //*[text()='Add to Cart']/..
+            clickOnElement(By.xpath(buttonXpath));
+        }
     }
 
     //Insurance page
@@ -33,7 +41,7 @@ public class CommonSteps extends SeleniumUtility {
     }
     @Then("Verify Toast displayed")
     public void verify_toast_displayed() {
-        boolean isToastDisplayed  = isElementDisplayed(ProfilePage.TOAST_BOX);
+        boolean isToastDisplayed = isElementDisplayed(ProfilePage.TOAST_BOX);
         Assert.assertTrue("Toast Should Displayed", isToastDisplayed);
     }
     @When("wait for {int} seconds")
@@ -43,6 +51,11 @@ public class CommonSteps extends SeleniumUtility {
         }catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
+    }
+
+    @When("User clicks on cart link")
+    public void user_clicks_on_cart_link() {
+        clickOnElement(HomePage.CART_LINK);
     }
 
 }

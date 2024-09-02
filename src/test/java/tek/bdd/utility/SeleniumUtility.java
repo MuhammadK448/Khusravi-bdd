@@ -28,11 +28,14 @@ public class SeleniumUtility extends BaseSetup {
         LOGGER.info("Clicking on Element {}", locator);
         getWait().until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
+    public void clickOnElement(WebElement locator) {
+        LOGGER.info("Clicking on Element {}", locator);
+        getWait().until(ExpectedConditions.elementToBeClickable(locator)).click();
+    }
 
     //Enter text to the located element
     public void sendText(By locator, String value) {
         //LOGGER.info("Sending text {} to locator {}", value, locator);
-
        // waitForVisibility(locator).sendKeys(value);
         LOGGER.info("Clearing And Sending text {} to locator {}", value, locator);
         WebElement element = waitForVisibility(locator);

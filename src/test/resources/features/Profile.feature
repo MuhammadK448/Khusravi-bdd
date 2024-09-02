@@ -23,3 +23,19 @@ Feature: Account profile feature
       When User enters "5301234567" on "Phone Number" field
       When User clicks on "Update" button
       Then Verify Toast displayed
+
+  @UserStory6
+  Scenario: Validate Success password change
+    Then Verify Profile page is displayed
+    When User enters "Khusravi@123" on "Previous Password" field
+    When User enters "Khusravi@334" on "New Password" field
+    When User enters "Khusravi@334" on "Confirm Password" field
+    When User clicks on "Change Password" button
+    Then Verify Toast displayed
+    When wait for 6 seconds
+    When User enters "Khusravi@334" on "Previous Password" field
+    When User enters "Khusravi@123" on "New Password" field
+    When User enters "Khusravi@123" on "Confirm Password" field
+    When User clicks on "Change Password" button
+    Then Verify Toast displayed
+    When wait for 6 seconds
