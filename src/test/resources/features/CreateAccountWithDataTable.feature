@@ -1,3 +1,4 @@
+@Regression
 Feature: Create new account with data table
 
   Background: Setup create account scenarios

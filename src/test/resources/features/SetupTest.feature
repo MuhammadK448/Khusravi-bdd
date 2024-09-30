@@ -1,3 +1,4 @@
+@Regression
 Feature: This feature is to setup framework
 
   @Smoke

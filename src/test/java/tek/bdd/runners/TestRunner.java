@@ -10,8 +10,8 @@ import org.junit.runner.RunWith;
         features = "classpath:features", // Directory for Feature file. classpath takes care of the rest of the address before feature
         glue = "tek.bdd.steps", //Package for all the steps
         dryRun = false, //set to true to scan features for unimplemented steps
-        tags = "@UserStory8", //we can use "and" and "or" for running multiple tags eg. "@Smoke and @Regression"
-        plugin = { //generate an html report in target folder by the name of index.html
+        tags = "@Regression", //we can use "and" and "or" for running multiple tags e.g. "@Smoke and @Regression"
+        plugin = { //generate a html report in target folder by the name of index.html
                 "html:target/cucumber_report/index.html"
 }
 )

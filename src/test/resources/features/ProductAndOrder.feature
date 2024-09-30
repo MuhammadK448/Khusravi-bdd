@@ -1,3 +1,4 @@
+@Regression
 Feature: Product and Order feature
   This Feature Validates everything related to product and order
 

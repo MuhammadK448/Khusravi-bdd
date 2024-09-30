@@ -1,3 +1,4 @@
+@Regression
 Feature: Account profile feature
 
   Background: Login to Account feature
