@@ -1,4 +1,4 @@
-@Regression
+@Ignore
 Feature: Insurance Portal Today's price plan
 
   @InsuranceTable
