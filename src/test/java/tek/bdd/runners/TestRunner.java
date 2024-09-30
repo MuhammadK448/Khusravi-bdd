@@ -12,7 +12,8 @@ import org.junit.runner.RunWith;
         dryRun = false, //set to true to scan features for unimplemented steps
         tags = "@Regression", //we can use "and" and "or" for running multiple tags e.g. "@Smoke and @Regression"
         plugin = { //generate a html report in target folder by the name of index.html
-                "html:target/cucumber_report/index.html"
+                "html:target/cucumber_report/index.html",
+                "json:target/jsonReport/report.json"
 }
 )
 public class TestRunner {
