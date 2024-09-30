@@ -54,7 +54,7 @@
         </dependency>
     </dependencies>
 
-    <!-- This is used to run headless chrome project on jenkins-->
+    <!-- This is used to run headless chrome project on jenkins -->
     <build>
         <plugins>
             <plugin>
